@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store} from '@ngrx/store';
+import { Store, select} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { initAction, changeUserName } from './state/01-actions';
 
@@ -14,7 +14,15 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(initAction())
-    this.user$ =this.store.select((state:any) => state.root.user)
+    //premiere technique pour utilisé le selector et affiché les données
+    //this.user$ =this.store.select((state:any) => state.root.user)
+
+    //deuxieme technique avec le select de ngrx
+    this.user$ = this.store.pipe(
+      //en mettant root et user dans les tableaux, j'ai accès à leurs clés. c'est pas top top 
+      select((state:any) => state['root']['user'])
+    );
+
   }
 
   constructor(private store: Store){
