@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { rootReducer, metaReducers } from './state/00-reducer';
+import { rootReducer, metaReducers, ROOT_FEATURE_KEY } from './state/00-reducer';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { rootReducer, metaReducers } from './state/00-reducer';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      root: rootReducer
+      [ROOT_FEATURE_KEY]: rootReducer
     }, {
       metaReducers: metaReducers
     })
