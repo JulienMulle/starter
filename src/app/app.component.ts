@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from './models/user.model';
 import { State } from './state/00-reducer';
 import { initAction, changeUserName } from './state/01-actions';
+import { getUser } from './state/02-selectors';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit{
 
     //deuxieme technique avec le select de ngrx
     this.user$ = this.store.pipe(
-      select((state:State) => state.root.user)
+      select(getUser)
     );
 
   }
