@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Store, select} from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -25,10 +26,10 @@ export class AppComponent implements OnInit{
     this.user$ = this.store.pipe(
       select(getUser)
     );
-
+    this.http.get('api/users').subscribe(val => console.log(val))
   }
 
-  constructor(private store: Store<State>){
+  constructor(private store: Store<State>, private http: HttpClient){
 
   }
 
