@@ -18,7 +18,10 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({
       [ROOT_FEATURE_KEY]: rootReducer
     }, {
-      metaReducers: metaReducers
+      metaReducers: metaReducers,
+      runtimeChecks: {
+        strictActionTypeUniqueness: true
+      }
     }),
     StoreDevtoolsModule.instrument({
       name: 'decouverte de ngrx',

@@ -3,7 +3,7 @@ import { Store, select} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from './models/user.model';
 import { State } from './state/00-reducer';
-import { initAction, changeUserName } from './state/01-actions';
+import { initAction, changeUserName, changeIsAdmin } from './state/01-actions';
 import { getUser } from './state/02-selectors';
 
 @Component({
@@ -33,6 +33,7 @@ export class AppComponent implements OnInit{
 
   public changeUserName(): void {
     this.store.dispatch(changeUserName({username: `coulisse ${Math.random()}`}));
+    this.store.dispatch(changeIsAdmin({isAdmin: false}))
   }
 
 
