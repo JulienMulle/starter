@@ -8,4 +8,8 @@
 <!--le ? me permet de vérifier si l'objet n'est pas nul-->
   <h4>UserName: {{(user$ |async)?.username}}</h4>
   <h4>IsAdmin: {{(user$ |async)?.isAdmin}}</h4>
+  <button 
+    class="btn btn-success"
+    (click)="loadUsers()"
+    >load Users</button>
 </div>

@@ -4,7 +4,7 @@ import { Store, select} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from './models/user.model';
 import { State } from './state/00-reducer';
-import { RootActions } from './state/01-actions';
+import { RootActions, loadUsers } from './state/01-actions';
 //import * as RootActions from './state/01-actions';
 import { getUser } from './state/02-selectors';
 
@@ -38,6 +38,8 @@ export class AppComponent implements OnInit{
     this.store.dispatch(RootActions.changeAdmin({isAdmin: false}))
   }
 
-
+  public loadUsers(): void{
+    this.store.dispatch(loadUsers());
+  }
 
 }
